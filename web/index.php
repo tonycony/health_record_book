@@ -29,7 +29,7 @@ $type  = $event->{"message"}->{"type"};
 $message = $event->{"message"}->{"text"};
 $user_id  = $event->{"source"}->{"userId"};
 $reply_token = $event->{"replyToken"};
-$post_data = [
+/*$post_data = [
 			  "replyToken" => $reply_token,
 			  "messages" => [
 				[
@@ -37,7 +37,126 @@ $post_data = [
 				  "text" =>  "你好 你可以使用其他功能了"
 				]
 			  ]
-			];
+			];*/
+$post_data = [
+			  "replyToken" => $reply_token,
+			  "messages" => [
+				[
+				  "type" => "template",
+				  "altText" => "this is a carousel template",
+				  "template" => [
+					"type" => "carousel",
+					"actions" => [],
+					"columns" => [
+					  [
+						"title" => "Q1",
+						"text" => "請問今天是洗澡，還是泡澡?",
+						"actions" => [
+						  [
+							"type" => "postback",
+							"label" => "泡澡",
+							"text" => "泡澡",
+							"data" => "{Q1}泡澡"
+						  ],
+						  [
+							"type" => "postback",
+							"label" => "沖澡",
+							"text" => "沖澡",
+							"data" => "{Q1}沖澡"
+						  ],
+						  [
+							"type" => "postback",
+							"label" => "擦澡",
+							"text" => "擦澡",
+							"data" => "{Q1}擦澡"
+						  ]
+						]
+					  ],
+					  [
+						"title"=> "Q1",
+						"text"=> "請問今天是洗澡，還是泡澡?",
+						"actions"=> [
+						  [
+							"type" => "postback",
+							"label" => "不想洗澡",
+							"text" => "不想洗澡",
+							"data" => "{Q1}不想洗澡"
+						  ],
+						  [
+							"type" => "postback",
+							"label"=> "因行動不便無法洗澡",
+							"text" => "因行動不便無法洗澡",
+							"data" => "{Q1}因行動不便無法洗澡"
+						  ],
+						  [
+							"type" => "message",
+							"label" => "-",
+							"text" => "-"
+						  ]
+						]
+					  ]
+					]
+				  ]
+				]
+			  ]
+			];			
+/*$post_data =[
+  "type" => "template",
+  "altText" => "this is a carousel template",
+  "template" => [
+    "type" => "carousel",
+    "actions" => [],
+    "columns" => [
+      [
+        "title" => "Q1",
+        "text" => "請問今天是洗澡，還是泡澡?",
+        "actions" => [
+          [
+            "type" => "postback",
+            "label" => "泡澡",
+            "text" => "泡澡",
+            "data" => "{Q1}泡澡"
+          ],
+          [
+            "type" => "postback",
+            "label" => "沖澡",
+            "text" => "沖澡",
+            "data" => "{Q1}沖澡"
+          ],
+          [
+            "type" => "postback",
+            "label" => "擦澡",
+            "text" => "擦澡",
+            "data" => "{Q1}擦澡"
+          ]
+        ]
+      ],
+      [
+        "title"=> "Q1",
+        "text"=> "請問今天是洗澡，還是泡澡?",
+        "actions"=> [
+          [
+            "type" => "postback",
+            "label" => "不想洗澡",
+            "text" => "不想洗澡",
+            "data" => "{Q1}不想洗澡"
+          ],
+          [
+            "type" => "postback",
+            "label"=> "因行動不便無法洗澡",
+            "text" => "因行動不便無法洗澡",
+            "data" => "{Q1}因行動不便無法洗澡"
+          ],
+          [
+            "type" => "message",
+            "label" => "-",
+            "text" => "-"
+          ]
+        ]
+      ]
+    ]
+  ]
+]*/
 push($post_data,$access_token);
 
 /*if($type == "text"){
