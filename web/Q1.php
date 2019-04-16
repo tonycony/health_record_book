@@ -81,7 +81,7 @@ function Q1_1($password,$answer,$link,$user_id,$reply_token)
 			  "messages" => [
 				[
 						"type"=> "template",
-				  "altText"=> "this is a buttons template",
+				  "altText"=> "Q2-1",
 				  "template"=> [
 					"type"=> "buttons",
 					"actions"=> [
@@ -104,8 +104,8 @@ function Q1_1($password,$answer,$link,$user_id,$reply_token)
 						"data"=> "[Q02]因行動不便無法走路"
 					  ]
 					],
-					"title"=> "有沒有去便利商店買菜或散步",
-					"text"=> "Q2-1"
+					"title"=> "Q2-1",
+					"text"=> "有沒有去便利商店買菜或散步"
 				 ]
 				]
 			  ]
@@ -117,8 +117,73 @@ function Q1_1($password,$answer,$link,$user_id,$reply_token)
 	}
 	
 }
-function Q1_2()
+function Q1_2($password,$answer,$link,$user_id,$reply_token)
 {
-	echo " ";
+	$point=0;
+	$sql="UPDATE daily_ans set Q1="."$point"." where user_id='$user_id'";
+	if($password=="[Q01]")
+	{
+		switch($answer)
+		{
+			
+			case "非常累或喘":
+				$point=1;
+				mysqli_query($link,$sql);
+				break;
+			case "很累或喘":
+				$point=2;
+				mysqli_query($link,$sql);
+				break;
+			case "相當累或喘":
+				$point=3;
+				mysqli_query($link,$sql);
+				break;
+			case "有點累或喘":
+				$point=4;
+				mysqli_query($link,$sql);
+				break;
+			case "一點都不累或喘":
+				$point=5;
+				mysqli_query($link,$sql);
+				break;
+		}
+		$post_data=[
+				"replyToken" => $reply_token,
+			  "messages" => [
+				[
+						"type"=> "template",
+				  "altText"=> "Q2-1",
+				  "template"=> [
+					"type"=> "buttons",
+					"actions"=> [
+					  [
+						"type"=> "postback",
+						"label"=> "有",
+						"text"=> "有",
+						"data"=> "[Q02]有"
+					  ],
+					  [
+						"type"=> "postback",
+						"label"=> "沒有",
+						"text"=> "沒有",
+						"data"=> "[Q02]沒有"
+					  ],
+					  [
+						"type"=> "postback",
+						"label"=> "因行動不便無法走路",
+						"text"=> "因行動不便無法走路",
+						"data"=> "[Q02]因行動不便無法走路"
+					  ]
+					],
+					"title"=> "Q2-1",
+					"text"=> "有沒有去便利商店買菜或散步"
+				 ]
+				]
+			  ]
+				
+			  
+			];
+		return $post_data;
+	}
 }
 ?>
