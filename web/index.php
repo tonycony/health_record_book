@@ -203,12 +203,12 @@ switch($question_num)
 {
 	case 1:
 		include_once("Q1.php");
-		$post_data=Q1_1($password,$answer,$link,$user_id,$reply_token);
+		$post_data=Q1_1($password,$answer,$link,$user_id,$reply_token);//這裡是要更新num所以示id
 		push($post_data,$access_token);
 		break;
 	case 1.5:
 		include_once("Q1.php");
-		$post_data=Q1_2($password,$answer,$link,$user_id,$reply_token);
+		$post_data=Q1_2($password,$answer,$link,$user_name,$reply_token);//這裡是要更新daily_ans所以示name
 		push($post_data,$access_token);
 		break;
 		
