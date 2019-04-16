@@ -119,7 +119,7 @@ function Q1_1($password,$answer,$link,$user_id,$reply_token)
 	}
 	
 }
-function Q1_2($password,$answer,$link,$user_name,$reply_token,$date)
+function Q1_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date)
 {
 
 	
@@ -190,6 +190,8 @@ function Q1_2($password,$answer,$link,$user_name,$reply_token,$date)
 				
 			  
 			];
+			$sql = "UPDATE user set question_num=2 where user_id='$user_id'";//要改成第二題
+			mysqli_query($link,$sql);
 		return $post_data;
 	}
 }
