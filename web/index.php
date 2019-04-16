@@ -192,7 +192,8 @@ if($message=="@填寫問卷")
 			push($post_data,$access_token);
 }
 
-			
+$password=substr($data,0,5);
+$answer=substr($data,5);				
 switch($question_num)
 {
 	case 1:
