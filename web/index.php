@@ -18,19 +18,9 @@ function push($post_data,$access_token)
 
 	curl_close($ch); 
 }
-
-include("mysql_connect.inc.php");
-$access_token ='z8+Cz/5lm0NszzRXsCqI7pFHqfTpG0R1ui9+1qqjQpp6PqEG3NRodAqmy5Ak12bGf1rH2dE461YF4pmW+vH7f6RwWHwwkp5W0Hh6nQfD8aEyzJB+Cgw8MbZVIiDPVuwJ+VFFrA5iUq4a1dw2lq78XQdB04t89/1O/w1cDnyilFU=';
-
-$json_string = file_get_contents('php://input');
-$json_obj = json_decode($json_string);
-$event = $json_obj->{"events"}[0];
-$type  = $event->{"message"}->{"type"};
-$message = $event->{"message"}->{"text"};
-$user_id  = $event->{"source"}->{"userId"};
-$reply_token = $event->{"replyToken"};
-
-$sql="SELECT user_id FROM user WHERE user_id='$user_id'";
+function check_name($user_id)
+{
+	$sql="SELECT user_id FROM user WHERE user_id='$user_id'";
 $result= mysqli_query($link,$sql);
 $row = mysqli_fetch_array($result);
 if($row[0]==null)
@@ -113,7 +103,20 @@ $row = mysqli_fetch_array($result2);
 		}
 		
 	}
+}
+include("mysql_connect.inc.php");
+$access_token ='z8+Cz/5lm0NszzRXsCqI7pFHqfTpG0R1ui9+1qqjQpp6PqEG3NRodAqmy5Ak12bGf1rH2dE461YF4pmW+vH7f6RwWHwwkp5W0Hh6nQfD8aEyzJB+Cgw8MbZVIiDPVuwJ+VFFrA5iUq4a1dw2lq78XQdB04t89/1O/w1cDnyilFU=';
 
+$json_string = file_get_contents('php://input');
+$json_obj = json_decode($json_string);
+$event = $json_obj->{"events"}[0];
+$type  = $event->{"message"}->{"type"};
+$message = $event->{"message"}->{"text"};
+$user_id  = $event->{"source"}->{"userId"};
+$reply_token = $event->{"replyToken"};
+
+
+check_name($user_id);
 
 
 
