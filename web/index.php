@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Taipei');
 function push($post_data,$access_token)
 {
 	//fwrite($file, json_encode($post_data)."\n");
@@ -118,15 +119,19 @@ $reply_token = $event->{"replyToken"};
 //////////////////////////////////////////////////////////
 check_name($user_id,$link,$message,$reply_token,$access_token);//檢查是否有輸入明子
 
-$sql = "SELECT question_num FROM user where user_id = '$user_id'";
+$sql = "SELECT * FROM user where user_id = '$user_id'";
 $result = mysqli_query($link,$sql);
 $row = mysqli_fetch_array($result);
-$question_num=$row[0];
+$question_num=$row["question_num"];
+$user_name=$row["user_name"];
+$date=date("Y.m.d");
 /////////////////////////////////////////////////////////檢查第幾題了
-if($message=="@填寫問卷")
+if($message=="@填寫問卷")//開始填寫問卷
 {
-	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";
+	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";//題號改為1開始
 	mysqli_query($link,$sql);
+	$sql2 ="INSERT INTO daily_ans (date,user_name) VALUES ($date,$user_name)";//更新一天的資料表
+	mysqli_query($link,$sql2);
 	$post_data = [
 			  "replyToken" => $reply_token,
 			  "messages" => [
@@ -193,7 +198,7 @@ if($message=="@填寫問卷")
 }
 
 $password=substr($data,0,5);
-$answer=substr($data,5);				
+$answer=substr($data,5);		
 switch($question_num)
 {
 	case 1:
@@ -202,7 +207,9 @@ switch($question_num)
 		push($post_data,$access_token);
 		break;
 	case 1.5:
-	
+		include_once("Q1.php");
+		$post_data=Q1_2($password,$answer,$link,$user_id,$reply_token);
+		push($post_data,$access_token);
 		break;
 		
 }
