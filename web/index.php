@@ -117,7 +117,16 @@ $reply_token = $event->{"replyToken"};
 
 
 check_name($user_id,$link,$message,$reply_token,$access_token);
-
+$post_data = [
+			  "replyToken" => $reply_token,
+			  "messages" => [
+				[
+				  "type" => "text",
+				  "text" =>  "$data"
+				]
+			  ]
+			];
+push($post_data,$access_token)	
 
 
 ?>
