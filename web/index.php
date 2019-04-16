@@ -197,6 +197,8 @@ if($message=="@填寫問卷")//開始填寫問卷
 			push($post_data,$access_token);
 }
 
+
+
 $password=substr($data,0,5);
 $answer=substr($data,5);		
 switch($question_num)
@@ -208,7 +210,7 @@ switch($question_num)
 		break;
 	case 1.5:
 		include_once("Q1.php");
-		$post_data=Q1_2($password,$answer,$link,$user_name,$reply_token,,$date);//這裡是要更新daily_ans所以示name
+		$post_data=Q1_2($password,$answer,$link,$user_name,$reply_token,$date);//這裡是要更新daily_ans所以示name
 		push($post_data,$access_token);
 		break;
 		
