@@ -112,6 +112,7 @@ $json_obj = json_decode($json_string);
 $event = $json_obj->{"events"}[0];
 $type  = $event->{"message"}->{"type"};
 $message = $event->{"message"}->{"text"};
+$data=$event->{"message"}->{"data"};
 $user_id  = $event->{"source"}->{"userId"};
 $reply_token = $event->{"replyToken"};
 
