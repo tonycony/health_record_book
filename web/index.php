@@ -115,19 +115,93 @@ $message = $event->{"message"}->{"text"};
 $data=$event->{"postback"}->{"data"};
 $user_id  = $event->{"source"}->{"userId"};
 $reply_token = $event->{"replyToken"};
+//////////////////////////////////////////////////////////
+check_name($user_id,$link,$message,$reply_token,$access_token);//檢查是否有輸入明子
 
-
-check_name($user_id,$link,$message,$reply_token,$access_token);
-$post_data = [
+$sql = "SELECT question_num FROM user where user_id = '$user_id'";
+$result = mysqli_query($link,$sql);
+$row = mysqli_fetch_array($result);
+$question_num=$row[0];
+/////////////////////////////////////////////////////////檢查第幾題了
+if($message=="@填寫問卷")
+{
+	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";
+	mysqli_query($link,$sql);
+	$post_data = [
 			  "replyToken" => $reply_token,
 			  "messages" => [
 				[
-				  "type" => "text",
-				  "text" =>  "$data"
+				  "type" => "template",
+				  "altText" => "Q1-1",
+				  "template" => [
+					"type" => "carousel",
+					"actions" => [],
+					"columns" => [
+					  [
+						"title" => "Q1-1",
+						"text" => "請問今天是洗澡，還是泡澡?",
+						"actions" => [
+						  [
+							"type" => "postback",
+							"label" => "泡澡",
+							"text" => "泡澡",
+							"data" => "[Q01]泡澡"
+						  ],
+						  [
+							"type" => "postback",
+							"label" => "沖澡",
+							"text" => "沖澡",
+							"data" => "[Q01]沖澡"
+						  ],
+						  [
+							"type" => "postback",
+							"label" => "擦澡",
+							"text" => "擦澡",
+							"data" => "[Q01]擦澡"
+						  ]
+						]
+					  ],
+					  [
+						"title"=> "Q1-1",
+						"text"=> "請問今天是洗澡，還是泡澡?",
+						"actions"=> [
+						  [
+							"type" => "postback",
+							"label" => "不想洗澡",
+							"text" => "不想洗澡",
+							"data" => "[Q01]不想洗澡"
+						  ],
+						  [
+							"type" => "postback",
+							"label"=> "因行動不便無法洗澡",
+							"text" => "因行動不便無法洗澡",
+							"data" => "[Q01]因行動不便無法洗澡"
+						  ],
+						  [
+							"type" => "message",
+							"label" => "-",
+							"text" => "-"
+						  ]
+						]
+					  ]
+					]
+				  ]
 				]
 			  ]
-			];
-push($post_data,$access_token)	
+			];			
+			push($post_data,$access_token);
+}
 
-
+			
+switch($question_num)
+{
+	case 1:
+		include_once("Q1.php");
+		Q1_1($password,$answer,$link,$user_id,$reply_token);
+		break;
+	case 1.5:
+	
+		break;
+		
+}
 ?>
