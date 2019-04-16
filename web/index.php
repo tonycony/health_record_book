@@ -18,7 +18,7 @@ function push($post_data,$access_token)
 
 	curl_close($ch); 
 }
-function check_name($user_id)
+function check_name($user_id,$link,$message,$reply_token,$access_token)
 {
 	$sql="SELECT user_id FROM user WHERE user_id='$user_id'";
 $result= mysqli_query($link,$sql);
@@ -116,7 +116,7 @@ $user_id  = $event->{"source"}->{"userId"};
 $reply_token = $event->{"replyToken"};
 
 
-check_name($user_id);
+check_name($user_id,$link,$message,$reply_token,$access_token);
 
 
 
