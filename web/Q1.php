@@ -1,138 +1,15 @@
 <?php
 date_default_timezone_set('Asia/Taipei');
-function push($post_data,$access_token)
-{
-	//fwrite($file, json_encode($post_data)."\n");
-	$ch = curl_init("https://api.line.me/v2/bot/message/reply");
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-		'Content-Type: application/json',
-		'Authorization: Bearer '.$access_token
-		//'Authorization: Bearer '. TOKEN
-	));
-	$result = curl_exec($ch);
-
-	curl_close($ch); 
-}
-function check_name($user_id,$link,$message,$reply_token,$access_token)
-{
-	$sql="SELECT user_id FROM user WHERE user_id='$user_id'";
-$result= mysqli_query($link,$sql);
-$row = mysqli_fetch_array($result);
-if($row[0]==null)
-{
-	$sql="insert into user(user_id) values ('$user_id')";
-	mysqli_query($link,$sql);
-	$sql2 = "SELECT user_name FROM user where user_id = '$user_id'";
-	$result2 = mysqli_query($link,$sql2);
-	$row = mysqli_fetch_array($result2);
-	if($row['user_name']==NULL)
-	{
-		if(substr($message,0,7)=="姓名@")
-		{
-			$name=substr($message,7);
-			$sql="UPDATE user set user_name='$name' where user_id='$user_id'";
-			mysqli_query($link,$sql);
-			$post_data = [
-			  "replyToken" => $reply_token,
-			  "messages" => [
-				[
-				  "type" => "text",
-				  "text" =>  "你好 $name  "."你可以使用其他功能了"
-				]
-			  ]
-			];
-			push($post_data,$access_token);
-		}
-		else
-		{
-			$post_data = [
-			  "replyToken" => $reply_token,
-			  "messages" => [
-				[
-				  "type" => "text",
-				  //"text" => "你好 $message \n哈哈 $message" ,
-				  "text" =>  "姓名格式輸入錯誤喔 格式為:姓名@xxx"
-				]
-			  ]
-			];
-			push($post_data,$access_token);
-		}
-		
-	}
-	
-}
-$sql2 = "SELECT user_name FROM user where user_id = '$user_id'";
-$result2 = mysqli_query($link,$sql2);
-$row = mysqli_fetch_array($result2);
-	if($row['user_name']==NULL)
-	{
-		if(substr($message,0,7)=="姓名@")
-		{
-			$name=substr($message,7);
-			$sql="UPDATE user set user_name='$name' where user_id='$user_id'";
-			mysqli_query($link,$sql);
-			$post_data = [
-			  "replyToken" => $reply_token,
-			  "messages" => [
-				[
-				  "type" => "text",
-				  "text" =>  "你好 $name  "."你可以使用其他功能了"
-				]
-			  ]
-			];
-			push($post_data,$access_token);
-		}
-		else
-		{
-			$post_data = [
-			  "replyToken" => $reply_token,
-			  "messages" => [
-				[
-				  "type" => "text",
-				  //"text" => "你好 $message \n哈哈 $message" ,
-				  "text" =>  "姓名格式輸入錯誤喔 格式為:姓名@xxx"
-				]
-			  ]
-			];
-			push($post_data,$access_token);
-		}
-		
-	}
-}
-include("mysql_connect.inc.php");
-$access_token ='z8+Cz/5lm0NszzRXsCqI7pFHqfTpG0R1ui9+1qqjQpp6PqEG3NRodAqmy5Ak12bGf1rH2dE461YF4pmW+vH7f6RwWHwwkp5W0Hh6nQfD8aEyzJB+Cgw8MbZVIiDPVuwJ+VFFrA5iUq4a1dw2lq78XQdB04t89/1O/w1cDnyilFU=';
-
-$json_string = file_get_contents('php://input');
-$json_obj = json_decode($json_string);
-$event = $json_obj->{"events"}[0];
-$type  = $event->{"message"}->{"type"};
-$message = $event->{"message"}->{"text"};
-$data=$event->{"postback"}->{"data"};
-$user_id  = $event->{"source"}->{"userId"};
-$reply_token = $event->{"replyToken"};
-//////////////////////////////////////////////////////////
-check_name($user_id,$link,$message,$reply_token,$access_token);//檢查是否有輸入明子
-
-$sql = "SELECT * FROM user where user_id = '$user_id'";
-$result = mysqli_query($link,$sql);
-$row = mysqli_fetch_array($result);
-$question_num=$row["question_num"];
-$user_name=$row["user_name"];
 $date=date("Y.m.d");
-/////////////////////////////////////////////////////////檢查第幾題了
-if($message=="@填寫問卷")//開始填寫問卷
+function Q1_1($password,$answer,$link,$user_id,$reply_token)
 {
-	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";//題號改為1開始
-	mysqli_query($link,$sql);
-	$sql2 ="INSERT INTO daily_ans (date,user_name) VALUES ($date,$user_name)";//更新一天的資料表
-	mysqli_query($link,$sql2);
-	$post_data = [
+	if($password=="[Q01]")
+	{
+		if($answer=="泡澡"||$answer=="沖澡")
+		{
+			$sql = "UPDATE user set question_num=1.5 where user_id='$user_id'";
+			mysqli_query($link,$sql);
+			$post_data = [
 			  "replyToken" => $reply_token,
 			  "messages" => [
 				[
@@ -143,44 +20,44 @@ if($message=="@填寫問卷")//開始填寫問卷
 					"actions" => [],
 					"columns" => [
 					  [
-						"title" => "Q1-1",
-						"text" => "請問今天是洗澡，還是泡澡?",
+						"title" => "Q1-2",
+						"text" => "在你洗澡的過程中，是否會覺得累或是感到喘?",
 						"actions" => [
 						  [
 							"type" => "postback",
-							"label" => "泡澡",
-							"text" => "泡澡",
-							"data" => "[Q01]泡澡"
+							"label" => "非常累或喘",
+							"text" => "非常累或喘",
+							"data" => "[Q01]非常累或喘"
 						  ],
 						  [
 							"type" => "postback",
-							"label" => "沖澡",
-							"text" => "沖澡",
-							"data" => "[Q01]沖澡"
+							"label" => "很累或喘",
+							"text" => "很累或喘",
+							"data" => "[Q01]很累或喘"
 						  ],
 						  [
 							"type" => "postback",
-							"label" => "擦澡",
-							"text" => "擦澡",
-							"data" => "[Q01]擦澡"
+							"label" => "相當累或喘",
+							"text" => "相當累或喘",
+							"data" => "[Q01]相當累或喘"
 						  ]
 						]
 					  ],
 					  [
-						"title"=> "Q1-1",
-						"text"=> "請問今天是洗澡，還是泡澡?",
+						"title"=> "Q1-2",
+						"text"=> "在你洗澡的過程中，是否會覺得累或是感到喘?",
 						"actions"=> [
 						  [
 							"type" => "postback",
-							"label" => "不想洗澡",
-							"text" => "不想洗澡",
-							"data" => "[Q01]不想洗澡"
+							"label" => "有點累或喘",
+							"text" => "有點累或喘",
+							"data" => "[Q01]有點累或喘"
 						  ],
 						  [
 							"type" => "postback",
-							"label"=> "因行動不便無法洗澡",
-							"text" => "因行動不便無法洗澡",
-							"data" => "[Q01]因行動不便無法洗澡"
+							"label"=> "一點都不累或喘",
+							"text" => "一點都不累或喘",
+							"data" => "[Q01]一點都不累或喘"
 						  ],
 						  [
 							"type" => "message",
@@ -193,24 +70,122 @@ if($message=="@填寫問卷")//開始填寫問卷
 				  ]
 				]
 			  ]
-			];			
-			push($post_data,$access_token);
+			];		
+			return $post_data;
+			
+		}
+		else
+		{
+			$sql = "UPDATE user set question_num=2 where user_id='$user_id'";
+			mysqli_query($link,$sql);
+			$post_data=[
+				"replyToken" => $reply_token,
+			  "messages" => [
+				[
+						"type"=> "template",
+				  "altText"=> "Q2-1",
+				  "template"=> [
+					"type"=> "buttons",
+					"actions"=> [
+					  [
+						"type"=> "postback",
+						"label"=> "有",
+						"text"=> "有",
+						"data"=> "[Q02]有"
+					  ],
+					  [
+						"type"=> "postback",
+						"label"=> "沒有",
+						"text"=> "沒有",
+						"data"=> "[Q02]沒有"
+					  ],
+					  [
+						"type"=> "postback",
+						"label"=> "因行動不便無法走路",
+						"text"=> "因行動不便無法走路",
+						"data"=> "[Q02]因行動不便無法走路"
+					  ]
+					],
+					"title"=> "Q2-1",
+					"text"=> "有沒有去便利商店買菜或散步"
+				 ]
+				]
+			  ]
+				
+			  
+			];
+			return $post_data;
+		}
+	}
+	
 }
-
-$password=substr($data,0,5);
-$answer=substr($data,5);		
-switch($question_num)
+function Q1_2($password,$answer,$link,$user_name,$reply_token,$date)
 {
-	case 1:
-		include_once("Q1.php");
-		$post_data=Q1_1($password,$answer,$link,$user_id,$reply_token);//這裡是要更新num所以示id
-		push($post_data,$access_token);
-		break;
-	case 1.5:
-		include_once("Q1.php");
-		$post_data=Q1_2($password,$answer,$link,$user_name,$reply_token);//這裡是要更新daily_ans所以示name
-		push($post_data,$access_token);
-		break;
-		
+	$point=0;
+	$sql="UPDATE daily_ans set Q1="."$point"." where user_name='$user_name' and date='$date'";
+	if($password=="[Q01]")
+	{
+		switch($answer)
+		{
+			
+			case "非常累或喘":
+				$point=1;
+				mysqli_query($link,$sql);
+				break;
+			case "很累或喘":
+				$point=2;
+				mysqli_query($link,$sql);
+				break;
+			case "相當累或喘":
+				$point=3;
+				mysqli_query($link,$sql);
+				break;
+			case "有點累或喘":
+				$point=4;
+				mysqli_query($link,$sql);
+				break;
+			case "一點都不累或喘":
+				$point=5;
+				mysqli_query($link,$sql);
+				break;
+		}
+		$post_data=[
+				"replyToken" => $reply_token,
+			  "messages" => [
+				[
+						"type"=> "template",
+				  "altText"=> "Q2-1",
+				  "template"=> [
+					"type"=> "buttons",
+					"actions"=> [
+					  [
+						"type"=> "postback",
+						"label"=> "有",
+						"text"=> "有",
+						"data"=> "[Q02]有"
+					  ],
+					  [
+						"type"=> "postback",
+						"label"=> "沒有",
+						"text"=> "沒有",
+						"data"=> "[Q02]沒有"
+					  ],
+					  [
+						"type"=> "postback",
+						"label"=> "因行動不便無法走路",
+						"text"=> "因行動不便無法走路",
+						"data"=> "[Q02]因行動不便無法走路"
+					  ]
+					],
+					"title"=> "Q2-1",
+					"text"=> "有沒有去便利商店買菜或散步"
+				 ]
+				]
+			  ]
+				
+			  
+			];
+		return $post_data;
+	}
 }
 ?>
