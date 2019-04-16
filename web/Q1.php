@@ -121,8 +121,8 @@ function Q1_1($password,$answer,$link,$user_id,$reply_token)
 }
 function Q1_2($password,$answer,$link,$user_name,$reply_token,$date)
 {
-	$point=0;
-	$sql="UPDATE daily_ans set Q1="."$point"." where user_name='$user_name' and date='$date'";
+
+	
 	if($password=="[Q01]")
 	{
 		switch($answer)
@@ -130,22 +130,27 @@ function Q1_2($password,$answer,$link,$user_name,$reply_token,$date)
 			
 			case "非常累或喘":
 				$point=1;
+				$sql="UPDATE daily_ans set Q1="."$point"." where user_name='$user_name' and date='$date'";
 				mysqli_query($link,$sql);
 				break;
 			case "很累或喘":
 				$point=2;
+				$sql="UPDATE daily_ans set Q1="."$point"." where user_name='$user_name' and date='$date'";
 				mysqli_query($link,$sql);
 				break;
 			case "相當累或喘":
 				$point=3;
+				$sql="UPDATE daily_ans set Q1="."$point"." where user_name='$user_name' and date='$date'";
 				mysqli_query($link,$sql);
 				break;
 			case "有點累或喘":
 				$point=4;
+				$sql="UPDATE daily_ans set Q1="."$point"." where user_name='$user_name' and date='$date'";
 				mysqli_query($link,$sql);
 				break;
 			case "一點都不累或喘":
 				$point=5;
+				$sql="UPDATE daily_ans set Q1="."$point"." where user_name='$user_name' and date='$date'";
 				mysqli_query($link,$sql);
 				break;
 		}
