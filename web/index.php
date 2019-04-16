@@ -130,7 +130,7 @@ if($message=="@填寫問卷")//開始填寫問卷
 {
 	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";//題號改為1開始
 	mysqli_query($link,$sql);
-	$sql2 ="INSERT INTO daily_ans (date,user_name) VALUES ($date,$user_name)";//更新一天的資料表
+	$sql2 ="INSERT INTO daily_ans (date,user_name) VALUES ('$date','$user_name')";//更新一天的資料表
 	mysqli_query($link,$sql2);
 	$post_data = [
 			  "replyToken" => $reply_token,
