@@ -198,7 +198,8 @@ switch($question_num)
 {
 	case 1:
 		include_once("Q1.php");
-		Q1_1($password,$answer,$link,$user_id,$reply_token);
+		$post_data=Q1_1($password,$answer,$link,$user_id,$reply_token);
+		push($post_data,$access_token);
 		break;
 	case 1.5:
 	
