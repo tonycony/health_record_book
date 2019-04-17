@@ -248,5 +248,15 @@ switch($question_num)
 		$post_data=Q5_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
 		push($post_data,$access_token);
 		break;
+	case 6:
+		include_once("Q6.php");
+		$post_data=Q6_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+		push($post_data,$access_token);
+		break;
+	case 6.5:
+		include_once("Q6.php");
+		$post_data=Q6_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+		push($post_data,$access_token);
+		break;
 }
 ?>
