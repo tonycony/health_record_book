@@ -74,7 +74,7 @@ function Q1_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)
 			return $post_data;
 			
 		}
-		else
+		else if($answer=="擦澡"||$answer=="不想洗澡"||$answer=="因行動不便無法洗澡")
 		{
 			$sql = "UPDATE user set question_num=2 where user_id='$user_id'";//改題號2
 			mysqli_query($link,$sql);

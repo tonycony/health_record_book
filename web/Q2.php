@@ -74,7 +74,7 @@ function Q2_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)//�
 			return $post_data;
 			
 		}
-		else//Miss了 換下一提
+		else if($answer=="沒有"||$answer=="因行動不便無法走路")//Miss了 換下一提
 		{
 			$sql = "UPDATE user set question_num=3 where user_id='$user_id'";//改題號2
 			mysqli_query($link,$sql);
