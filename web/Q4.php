@@ -23,7 +23,7 @@ function Q4_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)//�
 						"label"=> "沒有",
 						"text"=> "沒有",
 						"data"=> "[Q05]沒有"
-					  ],
+					  ]
 				
 					],
 					"title"=> "Q5-1",
