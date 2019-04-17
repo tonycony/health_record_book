@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Taipei');
 $date=date("Y.m.d");
-function Q1_1($password,$answer,$link,$user_id,$reply_token)
+function Q1_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)
 {
 	if($password=="[Q01]")
 	{
