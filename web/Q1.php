@@ -78,7 +78,7 @@ function Q1_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)
 		{
 			$sql = "UPDATE user set question_num=2 where user_id='$user_id'";//改題號2
 			mysqli_query($link,$sql);
-			$sql="UPDATE daily_ans set Q1= where user_name='$user_name' and date='$date'";//miss了改成-1
+			$sql="UPDATE daily_ans set Q1=-1 where user_name='$user_name' and date='$date'";//miss了改成-1
 			mysqli_query($link,$sql);
 			$post_data=[
 				"replyToken" => $reply_token,
