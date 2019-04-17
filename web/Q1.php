@@ -194,6 +194,8 @@ function Q1_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date)
 			case "一點都不累或喘":
 				$sql="UPDATE daily_ans set Q1=5 where user_name='$user_name' and date='$date'";
 				mysqli_query($link,$sql);
+				$sql = "UPDATE user set question_num=2 where user_id='$user_id'";//要改成第二題
+				mysqli_query($link,$sql);
 				return $post_data;
 				break;
 		}
