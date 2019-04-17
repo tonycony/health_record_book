@@ -4,7 +4,7 @@ function Q7_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)//�
 {
 	if($password=="[Q07]")//換密碼
 	{
-		if($answer=="好")//換回答
+		if($answer=="不好")//換回答
 		{
 			$sql = "UPDATE user set question_num=7.5 where user_id='$user_id'";//更換題號.5
 			mysqli_query($link,$sql);
@@ -43,7 +43,7 @@ function Q7_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)//�
 			return $post_data;
 			
 		}
-		else if($answer=="不好")//Miss了 換下一提
+		else if($answer=="好")//Miss了 換下一提
 		{
 			$sql = "UPDATE user set question_num=8 where user_id='$user_id'";//改題號
 			mysqli_query($link,$sql);
