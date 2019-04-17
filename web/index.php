@@ -223,6 +223,16 @@ switch($question_num)
 		$post_data=Q2_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
 		push($post_data,$access_token);
 		break;
+	case 3:
+		include_once("Q3.php");
+		$post_data=Q3_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+		push($post_data,$access_token);
+		break;
+	case 3.5:
+		include_once("Q3.php");
+		$post_data=Q3_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+		push($post_data,$access_token);
+		break;
 		
 }
 ?>
