@@ -313,5 +313,15 @@ switch($question_num)
 		$post_data=Q12_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
 		push($post_data,$access_token);
 		break;
+	case 13:
+		include_once("Q13.php");
+		$post_data=Q13_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+		push($post_data,$access_token);
+		break;
+	case 13.5:
+		include_once("Q13.php");
+		$post_data=Q13_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+		push($post_data,$access_token);
+		break;
 }
 ?>
