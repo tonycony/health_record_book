@@ -20,7 +20,7 @@ function Q8_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)//�
 					"actions"=> [
 					  [
 						"type"=> "postback",
-						"label"=> "",
+						"label"=> "需要",
 						"text"=> "需要",
 						"data"=> "[Q08]需要"
 					  ],
