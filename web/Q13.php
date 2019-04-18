@@ -6,7 +6,7 @@ function Q13_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date)//
 	{
 		if($answer=="有")//換回答
 		{
-			$sql = "UPDATE user set question_num=12.5 where user_id='$user_id'";//更換題號.5
+			$sql = "UPDATE user set question_num=13.5 where user_id='$user_id'";//更換題號.5
 			mysqli_query($link,$sql);
 			//要換表格
 			$post_data = [
