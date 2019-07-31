@@ -158,7 +158,7 @@ if($message=="@用藥紀錄")
 	];
 	push($post_data,$access_token);
 }
-else if($message=="@填寫問卷")//開始填寫問卷
+if($message=="@填寫問卷")//開始填寫問卷
 {
 	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";//題號改為1開始
 	mysqli_query($link,$sql);
