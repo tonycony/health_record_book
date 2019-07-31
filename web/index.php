@@ -163,13 +163,13 @@ else
 					"type"=> "postback",
 					"label"=> "記錄用藥",
 					"text"=> "記錄用藥",
-					"data"=> "[f1]記錄用藥"
+					"data"=> "[f01]記錄用藥"
 					  ],
 					  [
 					"type"=> "postback",
 					"label"=> "查詢藥品",
 					"text"=> "查詢藥品",
-					"data"=> "[f1]查詢藥品"
+					"data"=> "[f01]查詢藥品"
 					  ]
 					],
 					"title"=> "用藥紀錄",
