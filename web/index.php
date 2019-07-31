@@ -16,7 +16,6 @@ function push($post_data,$access_token)
 		//'Authorization: Bearer '. TOKEN
 	));
 	$result = curl_exec($ch);
-
 	curl_close($ch); 
 }
 function check_name($user_id,$link,$message,$reply_token,$access_token)
@@ -107,7 +106,6 @@ $row = mysqli_fetch_array($result2);
 }
 include("mysql_connect.inc.php");
 $access_token ='z8+Cz/5lm0NszzRXsCqI7pFHqfTpG0R1ui9+1qqjQpp6PqEG3NRodAqmy5Ak12bGf1rH2dE461YF4pmW+vH7f6RwWHwwkp5W0Hh6nQfD8aEyzJB+Cgw8MbZVIiDPVuwJ+VFFrA5iUq4a1dw2lq78XQdB04t89/1O/w1cDnyilFU=';
-
 $json_string = file_get_contents('php://input');
 $json_obj = json_decode($json_string);
 $event = $json_obj->{"events"}[0];
@@ -118,12 +116,12 @@ $user_id  = $event->{"source"}->{"userId"};
 $reply_token = $event->{"replyToken"};
 //////////////////////////////////////////////////////////
 check_name($user_id,$link,$message,$reply_token,$access_token);//檢查是否有輸入明子
-
 $sql = "SELECT * FROM user where user_id = '$user_id'";
 $result = mysqli_query($link,$sql);
 $row = mysqli_fetch_array($result);
 $question_num=$row["question_num"];
 $user_name=$row["user_name"];
+$function_num=$row["function_num"];
 $date=date("Y.m.d");
 /////////////////////////////////////////////////////////檢查第幾題了
 include("f1.php");
@@ -366,8 +364,5 @@ if($message=="@填寫問卷")//開始填寫問卷
 			break;
 	}
 }
-
-
-
 mysqli_close($link);
 ?>
