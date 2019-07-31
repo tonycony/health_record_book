@@ -126,7 +126,39 @@ $question_num=$row["question_num"];
 $user_name=$row["user_name"];
 $date=date("Y.m.d");
 /////////////////////////////////////////////////////////檢查第幾題了
-if($message=="@填寫問卷")//開始填寫問卷
+if($message=="@用藥紀錄")
+{
+	$post_data = 
+	[
+		"replyToken" => $reply_token,
+		"messages" => [
+				[
+				  "type": "template",
+				  "template": [
+				    "type": "buttons",
+				    "actions": [
+				      [
+					"type": "postback",
+					"label": "記錄用藥",
+					"text": "記錄用藥",
+					"data": "[f1]記錄用藥"
+				      ],
+				      [
+					"type": "postback",
+					"label": "查詢藥品",
+					"text": "查詢藥品",
+					"data": "[f1]查詢藥品"
+				      ]
+				    ],
+				    "title": "用藥紀錄",
+				    "text": "選擇功能"
+				  ]
+				]
+		]
+	];
+	push($post_data,$access_token);
+}
+else if($message=="@填寫問卷")//開始填寫問卷
 {
 	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";//題號改為1開始
 	mysqli_query($link,$sql);
