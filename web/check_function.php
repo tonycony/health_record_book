@@ -1,5 +1,5 @@
 <?php
-function check_function($function_num,$message,$user_id,$access_token,$reply_token)
+function check_function($function_num,$message,$user_id,$link,$access_token,$reply_token)
 {
 	switch ($function_num)
 	{
@@ -13,7 +13,7 @@ function check_function($function_num,$message,$user_id,$access_token,$reply_tok
 							"messages" => [
 								[ 
 								  "type"=> "text",    
-								  "text"=> "$date 用藥紀錄 $message,"
+								  "text"=> "$date 用藥紀錄 $message"
 								]
 							]
 						];
