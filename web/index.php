@@ -418,7 +418,7 @@ else if($data=="")
 													  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_4_news.png",
 													  "flex"=> 3,
 													  "size"=> "full",
-													  "aspectRatio"=> "20=>13",
+													  "aspectRatio"=> "20:13",
 													  "aspectMode"=> "cover",
 													  "action"=> [
 														"type"=> "uri",
@@ -440,7 +440,7 @@ else if($data=="")
 															  "type"=> "image",
 															  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_1.png",
 															  "size"=> "full",
-															  "aspectRatio"=> "20=>13",
+															  "aspectRatio"=> "20:13",
 															  "aspectMode"=> "fit",
 															  "backgroundColor"=> "#FFFFFF"
 															],
@@ -449,7 +449,7 @@ else if($data=="")
 															  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_2.png",
 															  "margin"=> "md",
 															  "size"=> "sm",
-															  "aspectRatio"=> "4=>3",
+															  "aspectRatio"=> "4:3",
 															  "aspectMode"=> "cover"
 															]
 														  ]
