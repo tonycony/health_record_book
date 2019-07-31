@@ -14,7 +14,7 @@ function f1($data,$user_id,$link,$access_token,$reply_token)
 				]
 			]
 		];
-		return $post_data;
+		push($post_data,$access_token);
 	}
 	else if($data=="[f1]查詢藥品")
 	{
@@ -29,7 +29,7 @@ function f1($data,$user_id,$link,$access_token,$reply_token)
 				]
 			]
 		];
-		return $post_data;
+		push($post_data,$access_token);
 		
 	}
 }
