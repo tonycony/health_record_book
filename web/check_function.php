@@ -30,7 +30,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 							"messages" => [
 								[ 
 								  "type"=> "text",    
-								  "text"=> "藥品資訊為 \n $result"
+								  "text"=> "藥品資訊為 \n $row[0]"
 								]
 							]
 						];
