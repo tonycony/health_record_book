@@ -152,10 +152,13 @@ else if($data=="")
 								"type"=> "buttons",
 								"actions"=> [
 								  [
-								"type"=> "postback",
+								"type"=> "datetimepicker",
 								"label"=> "記錄下次門診時間",
-								"text"=> "記錄下次門診時間",
-								"data"=> "[f02]記錄下次門診時間"
+								"data"=> "[f02]記錄下次門診時間",
+								"mode"=> "datetime",
+								"initial"=> "2019-07-31T09:53",
+								"max"=> "2020-07-31T09:53",
+								"min"=> "2018-07-31T09:53"
 								  ]
 								],
 								"text"=> "紀錄"

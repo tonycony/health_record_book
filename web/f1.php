@@ -41,7 +41,7 @@ function f1($data,$user_id,$link,$access_token,$reply_token)
 			"messages" => [
 				[
 				  "type"=> "text",
-				  "text"=> "請輸入門診時間 格式:#時間 例如:#2019/2/10 早上10點"
+				  "text"=> "下次門診時間為:"
 				]
 			]
 		];
@@ -49,6 +49,7 @@ function f1($data,$user_id,$link,$access_token,$reply_token)
 		
 		
 	}
+	/*
 	else if($data=="[f02]看診時間提醒")
 	{
 		$sql = "UPDATE user set function_num=0 where user_id='$user_id'";
@@ -68,6 +69,7 @@ function f1($data,$user_id,$link,$access_token,$reply_token)
 		push($post_data,$access_token);
 		
 	}
+	*/
 	return 0;
 }
 ?>
