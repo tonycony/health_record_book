@@ -1,21 +1,25 @@
 <?php
-function f1($data)
+function f1($data,$user_id,$access_token)
 {
-	if(data=="[f1]記錄用藥")
+	if($data=="[f1]記錄用藥")
 	{
+		$sql = "UPDATE user set function_num=1.1 where user_id='$user_id'";
+		mysqli_query($link,$sql);
 		$post_data = [
 			"replyToken" => $reply_token,
 			"messages" => [
 				[ 
 				  "type"=> "text",    
-				  "text"=> "請入輸入你的藥品 格式:藥品/克數/次數 \n 例如:健安心/100/1天2次"
+				  "text"=> "請入輸入你的藥品 格式:藥品/劑量/次數 \n 例如:健安心/100/1天2次"
 				]
 			]
 		];
-		return $post_data;
+		push($post_data,$access_token);
 	}
-	else if(data=="[f1]查詢藥品")
+	else if($data=="[f1]查詢藥品")
 	{
+		$sql = "UPDATE user set function_num=1.2 where user_id='$user_id'";
+		mysqli_query($link,$sql);
 		$post_data = [
 			"replyToken" => $reply_token,
 			"messages" => [
@@ -25,7 +29,7 @@ function f1($data)
 				]
 			]
 		];
-		return $post_data;
+		push($post_data,$access_token);
 		
 	}
 }
