@@ -61,7 +61,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 				
 				break;	
 			case 2.1:
-				$sql2 = "UPDATE user set time=$message where user_id='$user_id'";
+				$sql2 = "UPDATE user set time='$message' where user_id='$user_id'";
 				$result=mysqli_query($link,$sql2);
 					$post_data = [
 								"replyToken" => $reply_token,
