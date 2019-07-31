@@ -1,6 +1,7 @@
 <?php
 function check_function($function_num,$message,$user_id,$link,$access_token,$reply_token)
 {
+	$message=substr($message,1);
 	switch ($function_num)
 	{
 		case 1.1:
