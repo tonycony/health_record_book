@@ -32,5 +32,6 @@ function f1($data,$user_id,$link,$access_token,$reply_token)
 		push($post_data,$access_token);
 		
 	}
+	return 0;
 }
 ?>

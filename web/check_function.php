@@ -35,7 +35,10 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 							]
 						];
 				push($post_data,$access_token);
+				$sql = "UPDATE user set function_num=0 where user_id='$user_id'";
+				mysqli_query($link,$sql);
 			}
+			
 			else
 			{
 				$post_data = [
@@ -49,10 +52,10 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 						];
 				push($post_data,$access_token);
 			}
-			$sql = "UPDATE user set function_num=0 where user_id='$user_id'";
-		    mysqli_query($link,$sql);
+			
 			break;	
 		
 	}
+	return 0;
 }
 ?>
