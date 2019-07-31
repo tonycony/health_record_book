@@ -61,15 +61,14 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 				
 				break;	
 			case 2.1:
-				$sql2 = "SELECT time FROM user WHERE user_id='$user_id'";
+				$sql2 = "UPDATE user set time=$message where user_id='$user_id'";
 				$result=mysqli_query($link,$sql2);
-				$row = mysqli_fetch_array($result);
 					$post_data = [
 								"replyToken" => $reply_token,
 								"messages" => [
 									[ 
 									  "type"=> "text",    
-									  "text"=> "已完成紀錄， 門診時間為:$row[0]!!"
+									  "text"=> "已完成紀錄， 門診時間為:$message!!\n請於下方紀錄提醒時間"
 									]
 								]
 							];
