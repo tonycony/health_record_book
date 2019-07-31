@@ -130,7 +130,7 @@ if($data!="")
 {
 	f1($data,$user_id,$link,$access_token,$reply_token);
 }
-else
+else if($data=="")
 {
 	if($message=="@門診紀錄")
 	{
