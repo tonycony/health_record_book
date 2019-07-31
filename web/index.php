@@ -381,9 +381,10 @@ else
 				break;
 		}
 	}	
+	check_function($function_num,$message,$user_id,$link,$access_token,$reply_token);
 }
 
 
-check_function($function_num,$message,$user_id,$link,$access_token,$reply_token);
+
 mysqli_close($link);
 ?>
