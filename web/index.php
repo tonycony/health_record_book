@@ -415,7 +415,7 @@ else if($data=="")
 													],
 													"hero"=> [
 													  "type"=> "image",
-													  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_4_news.png",
+													  "url"=> "https://i.ibb.co/hRmKyyG/0703-soliantorange.jpg",
 													  "flex"=> 3,
 													  "size"=> "full",
 													  "aspectRatio"=> "20:13",
