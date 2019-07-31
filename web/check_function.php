@@ -73,8 +73,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								]
 							];
 					push($post_data,$access_token);
-					$post_data2 = 
-					[
+					$post_data2 = [
 						"replyToken" => $reply_token,
 						"messages" => [
 							[
@@ -84,13 +83,13 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								"type"=> "buttons",
 								"actions"=> [
 								  [
-								"type"=> "datetimepicker",
-								"label"=> "看診時間提醒",
-								"data"=> "[f02]看診時間提醒",
-								"mode"=>"date",
-								"initial"=>"2019-07-31",
-								"max"=> "2020-07-31",
-								"min"=> "2018-07-31"
+									"type"=> "datetimepicker",
+									"label"=> "看診時間提醒",
+									"data"=> "[f02]看診時間提醒",
+									"mode"=> "date",
+									"initial"=> "2019-07-31",
+									"max"=> "2020-07-31",
+									"min"=> "2018-07-31"
 								  ]
 								],
 								"text"=> "提醒"
@@ -99,7 +98,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								
 						]
 					];
-					push($post_data2,$access_token);					
+					push($post_data,$access_token);					
 				break;
 		}
 	}
