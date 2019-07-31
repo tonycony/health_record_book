@@ -126,7 +126,7 @@ $question_num=$row["question_num"];
 $user_name=$row["user_name"];
 $date=date("Y.m.d");
 /////////////////////////////////////////////////////////檢查第幾題了
-/*if($message=="@用藥紀錄")
+if($message=="@用藥紀錄")
 {
 	$post_data = 
 	[
@@ -157,7 +157,7 @@ $date=date("Y.m.d");
 		]
 	];
 	push($post_data,$access_token);
-}*/
+}
 if($message=="@填寫問卷")//開始填寫問卷
 {
 	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";//題號改為1開始
@@ -227,138 +227,139 @@ if($message=="@填寫問卷")//開始填寫問卷
 			  ]
 			];			
 			push($post_data,$access_token);
+	$password=substr($data,0,5);
+	$answer=substr($data,5);		
+	switch($question_num)
+	{
+		case 1:
+			include_once("Q1.php");
+			$post_data=Q1_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 1.5:
+			include_once("Q1.php");
+			$post_data=Q1_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 2:
+			include_once("Q2.php");
+			$post_data=Q2_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 2.5:
+			include_once("Q2.php");
+			$post_data=Q2_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 3:
+			include_once("Q3.php");
+			$post_data=Q3_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 3.5:
+			include_once("Q3.php");
+			$post_data=Q3_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 4:
+			include_once("Q4.php");
+			$post_data=Q4_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;	
+		case 5:
+			include_once("Q5.php");
+			$post_data=Q5_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 5.5:
+			include_once("Q5.php");
+			$post_data=Q5_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 6:
+			include_once("Q6.php");
+			$post_data=Q6_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 6.5:
+			include_once("Q6.php");
+			$post_data=Q6_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 7:
+			include_once("Q7.php");
+			$post_data=Q7_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 7.5:
+			include_once("Q7.php");
+			$post_data=Q7_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 8:
+			include_once("Q8.php");
+			$post_data=Q8_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 8.5:
+			include_once("Q8.php");
+			$post_data=Q8_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 9:
+			include_once("Q9.php");
+			$post_data=Q9_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 10:
+			include_once("Q10.php");
+			$post_data=Q10_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 10.5:
+			include_once("Q10.php");
+			$post_data=Q10_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 11:
+			include_once("Q11.php");
+			$post_data=Q11_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 11.5:
+			include_once("Q11.php");
+			$post_data=Q11_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 12:
+			include_once("Q12.php");
+			$post_data=Q12_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 12.5:
+			include_once("Q12.php");
+			$post_data=Q12_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 13:
+			include_once("Q13.php");
+			$post_data=Q13_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 13.5:
+			include_once("Q13.php");
+			$post_data=Q13_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+		case 14:
+			include_once("Q14.php");
+			$post_data=Q14_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
+			push($post_data,$access_token);
+			break;
+	}
 }
 
 
 
-$password=substr($data,0,5);
-$answer=substr($data,5);		
-switch($question_num)
-{
-	case 1:
-		include_once("Q1.php");
-		$post_data=Q1_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 1.5:
-		include_once("Q1.php");
-		$post_data=Q1_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 2:
-		include_once("Q2.php");
-		$post_data=Q2_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 2.5:
-		include_once("Q2.php");
-		$post_data=Q2_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 3:
-		include_once("Q3.php");
-		$post_data=Q3_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 3.5:
-		include_once("Q3.php");
-		$post_data=Q3_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 4:
-		include_once("Q4.php");
-		$post_data=Q4_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;	
-	case 5:
-		include_once("Q5.php");
-		$post_data=Q5_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 5.5:
-		include_once("Q5.php");
-		$post_data=Q5_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 6:
-		include_once("Q6.php");
-		$post_data=Q6_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 6.5:
-		include_once("Q6.php");
-		$post_data=Q6_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 7:
-		include_once("Q7.php");
-		$post_data=Q7_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 7.5:
-		include_once("Q7.php");
-		$post_data=Q7_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 8:
-		include_once("Q8.php");
-		$post_data=Q8_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 8.5:
-		include_once("Q8.php");
-		$post_data=Q8_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 9:
-		include_once("Q9.php");
-		$post_data=Q9_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 10:
-		include_once("Q10.php");
-		$post_data=Q10_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 10.5:
-		include_once("Q10.php");
-		$post_data=Q10_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 11:
-		include_once("Q11.php");
-		$post_data=Q11_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 11.5:
-		include_once("Q11.php");
-		$post_data=Q11_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 12:
-		include_once("Q12.php");
-		$post_data=Q12_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 12.5:
-		include_once("Q12.php");
-		$post_data=Q12_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 13:
-		include_once("Q13.php");
-		$post_data=Q13_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 13.5:
-		include_once("Q13.php");
-		$post_data=Q13_2($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-	case 14:
-		include_once("Q14.php");
-		$post_data=Q14_1($password,$answer,$link,$user_id,$user_name,$reply_token,$date);
-		push($post_data,$access_token);
-		break;
-}
+
 ?>
