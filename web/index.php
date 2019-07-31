@@ -485,7 +485,7 @@ else if($data=="")
 															  "color"=> "#1865BF",
 															  "action"=> [
 																"type"=> "uri",
-																"uri"=> "https://www.ntuh.gov.tw/DD/education/DocLib7/%E9%A3%B2%E9%A3%9F%E8%A1%9B%E6%95%99%E5%96%AE%E5%BC%B5_%E4%BD%8E%E9%88%89%E9%A3%B2%E9%A3%9F.pdf"
+																"uri"=> "https://www.ymuh.ym.edu.tw/tw/departments/dep-support/nutrition/health-education/5915-%E4%BD%8E%E9%88%89%E9%A3%B2%E9%A3%9F%E5%8E%9F%E5%89%87.html"
 															  ]
 															],
 															[
