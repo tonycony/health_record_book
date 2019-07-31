@@ -126,8 +126,19 @@ $date=date("Y.m.d");
 /////////////////////////////////////////////////////////檢查第幾題了
 include("f1.php");
 include("check_function.php");
-f1($data,$user_id,$link,$access_token,$reply_token);
-check_function($function_num,$message,$user_id,$link,$access_token,$reply_token);
+if($message=="@門診紀錄")
+{
+	$post_data = [
+							"replyToken" => $reply_token,
+							"messages" => [
+								[ 
+								  "type"=> "text",    
+								  "text"=> "$date gggg $data"
+								]
+							]
+						];
+			push($post_data,$access_token);
+}
 if($message=="@用藥紀錄")
 {
 	$sql="UPDATE user set function_num=1 where user_id='$user_id'";
@@ -164,7 +175,7 @@ if($message=="@用藥紀錄")
 	];
 	push($post_data,$access_token);
 }
-if($message=="@填寫問卷")//開始填寫問卷
+else if($message=="@填寫問卷")//開始填寫問卷
 {
 	$sql = "UPDATE user set question_num=1 where user_id='$user_id'";//題號改為1開始
 	mysqli_query($link,$sql);
@@ -364,5 +375,7 @@ if($message=="@填寫問卷")//開始填寫問卷
 			break;
 	}
 }
+f1($data,$user_id,$link,$access_token,$reply_token);
+check_function($function_num,$message,$user_id,$link,$access_token,$reply_token);
 mysqli_close($link);
 ?>
