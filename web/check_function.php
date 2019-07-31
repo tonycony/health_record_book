@@ -74,12 +74,12 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								"actions"=> [
 								  [
 									"type"=> "datetimepicker",
-									"label"=> "已完成紀錄， 門診時間為:!!請於下方紀錄提醒時間",
+									"label"=> "已完成紀錄，門診時間為:!!請於下方紀錄提醒時間",
 									"data"=> "[f02]看診時間提醒",
 									"mode"=> "date",
-									"initial"=> "2019-07-31",
-									"max"=> "2020-07-31",
-									"min"=> "2018-07-31"
+									"initial"=> "2019-07-31T09:53",
+									"max"=> "2020-07-31T09:53",
+									"min"=> "2018-07-31T09:53"
 								  ]
 								],
 								"title"=> "5458",
