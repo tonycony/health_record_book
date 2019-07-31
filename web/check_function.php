@@ -34,7 +34,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								]
 							]
 						];
-				push($post_data,$access_token)
+				push($post_data,$access_token);
 			}
 			else
 			{
