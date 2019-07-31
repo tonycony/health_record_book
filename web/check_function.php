@@ -17,7 +17,7 @@ function check_function($function_num,$message,$user_id,$access_token,$reply_tok
 								]
 							]
 						];
-			push($post_data,$access_token)
+			push($post_data,$access_token);
 			break;
 		case 1.2:
 			$sql = "SELECT url FROM drug WHERE drug_name='$message'";
@@ -47,7 +47,7 @@ function check_function($function_num,$message,$user_id,$access_token,$reply_tok
 								]
 							]
 						];
-				push($post_data,$access_token)
+				push($post_data,$access_token);
 			}
 			$sql = "UPDATE user set function_num=0 where user_id='$user_id'";
 		    mysqli_query($link,$sql);
