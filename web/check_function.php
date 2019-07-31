@@ -63,7 +63,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 			case 2.1:
 				$sql2 = "UPDATE user set time='$message' where user_id='$user_id'";
 				$result=mysqli_query($link,$sql2);
-					$post_data2 = [
+					$post_data = [
 						"replyToken" => $reply_token,
 						"messages" => [
 							[
@@ -73,21 +73,19 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								"type"=> "buttons",
 								"actions"=> [
 								  [
-									"type"=> "postback",
-									"label"=> "已完成紀錄，門診時間為:!!請於下方紀錄提醒時間",
-									"text"=>"已完成紀錄",
-									"data"=> "[f02]看診時間提醒"
-
+								"type"=> "postback",
+								"label"=> "記錄下次門診時間",
+								"text"=> "記錄下次門診時間",
+								"data"=> "[f02]記錄下次門診時間"
 								  ]
 								],
-								"title"=> "5458",
-								"text"=> "提醒"
+								"text"=> "紀錄"
 							  ]
 							]
 								
 						]
 					];
-					push($post_data2,$access_token);					
+					push($post_data,$access_token);					
 				break;
 		}
 	}
