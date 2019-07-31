@@ -385,7 +385,151 @@ else if($data=="")
 							push($post_data,$access_token);
 							break;
 					}
-				}	
+				}
+				else if($message=="@衛教區")
+				{
+					$post_data = [
+							  "replyToken" => $reply_token,
+							  "messages" => [
+												[
+												  "type"=> "flex",
+												  "altText"=> "Flex Message",
+												  "contents"=> [
+													"type"=> "bubble",
+													"header"=> [
+													  "type"=> "box",
+													  "layout"=> "horizontal",
+													  "contents"=> [
+														[
+														  "type"=> "text",
+														  "text"=> "最新資訊",
+														  "margin"=> "md",
+														  "size"=> "xl",
+														  "align"=> "start",
+														  "gravity"=> "center",
+														  "weight"=> "bold",
+														  "color"=> "#073594",
+														  "wrap"=> false
+														]
+													  ]
+													],
+													"hero"=> [
+													  "type"=> "image",
+													  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_4_news.png",
+													  "flex"=> 3,
+													  "size"=> "full",
+													  "aspectRatio"=> "20=>13",
+													  "aspectMode"=> "cover",
+													  "action"=> [
+														"type"=> "uri",
+														"label"=> "Action",
+														"uri"=> "https://linecorp.com/"
+													  ]
+													],
+													"body"=> [
+													  "type"=> "box",
+													  "layout"=> "horizontal",
+													  "spacing"=> "md",
+													  "contents"=> [
+														[
+														  "type"=> "box",
+														  "layout"=> "vertical",
+														  "flex"=> 1,
+														  "contents"=> [
+															[
+															  "type"=> "image",
+															  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_1.png",
+															  "size"=> "full",
+															  "aspectRatio"=> "20=>13",
+															  "aspectMode"=> "fit",
+															  "backgroundColor"=> "#FFFFFF"
+															],
+															[
+															  "type"=> "image",
+															  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_2.png",
+															  "margin"=> "md",
+															  "size"=> "sm",
+															  "aspectRatio"=> "4=>3",
+															  "aspectMode"=> "cover"
+															]
+														  ]
+														],
+														[
+														  "type"=> "box",
+														  "layout"=> "vertical",
+														  "flex"=> 2,
+														  "contents"=> [
+															[
+															  "type"=> "text",
+															  "text"=> "認識心臟衰竭",
+															  "flex"=> 1,
+															  "size"=> "lg",
+															  "gravity"=> "top",
+															  "weight"=> "bold",
+															  "color"=> "#1865BF",
+															  "action"=> [
+																"type"=> "uri",
+																"uri"=> "https://www.tahsda.org.tw/departments/files/CardiovascularCenter/認識心臟衰竭.pdf"
+															  ]
+															],
+															[
+															  "type"=> "separator"
+															],
+															[
+															  "type"=> "text",
+															  "text"=> "低鹽飲食",
+															  "flex"=> 2,
+															  "size"=> "lg",
+															  "gravity"=> "center",
+															  "weight"=> "bold",
+															  "color"=> "#1865BF",
+															  "action"=> [
+																"type"=> "uri",
+																"uri"=> "https://www.tahsda.org.tw/departments/files/CardiovascularCenter/認識心臟衰竭.pdf"
+															  ]
+															],
+															[
+															  "type"=> "separator"
+															],
+															[
+															  "type"=> "text",
+															  "text"=> "林口長庚網路掛號",
+															  "flex"=> 2,
+															  "size"=> "lg",
+															  "gravity"=> "center",
+															  "weight"=> "bold",
+															  "color"=> "#1865BF",
+															  "action"=> [
+																"type"=> "uri",
+																"uri"=> "https://register.cgmh.org.tw/RMSTimeTable.aspx?dpt=32200A32220A"
+															  ]
+															],
+															[
+															  "type"=> "separator"
+															],
+															[
+															  "type"=> "text",
+															  "text"=> "勞保傷病補助",
+															  "flex"=> 2,
+															  "size"=> "lg",
+															  "gravity"=> "bottom",
+															  "weight"=> "bold",
+															  "color"=> "#1865BF",
+															  "action"=> [
+																"type"=> "uri",
+																"uri"=> "https://www.bli.gov.tw/0004837.html"
+															  ]
+															]
+														  ]
+														]
+													  ]
+													]
+												  ]
+												]
+							  ]
+					];
+					push($post_data,$access_token);
+				}
 			break;
 			
 		case '#':
