@@ -137,19 +137,38 @@ else if($data=="")
 	switch($function_password)
 	{
 		case '@':
-				if($message=="@門診紀錄")
+                if($message=="@門診紀錄")
 				{
-					$post_data = [
-											"replyToken" => $reply_token,
-											"messages" => [
-												[ 
-												  "type"=> "text",    
-												  "text"=> "$date gggg $data"
-												]
-											]
-										];
+					$sql="UPDATE user set function_num=2 where user_id='$user_id'";
+					mysqli_query($link,$sql);
+					$post_data = 
+					[
+						"replyToken" => $reply_token,
+						"messages" => [
+							[
+							  "type"=> "template",
+							  "altText"=> "this is a buttons template",
+							  "template"=> [
+								"type"=> "buttons",
+								"actions"=> [
+								  [
+								"type"=> "datetimepicker",
+								"label"=> "記錄下次門診時間",
+								"data"=> "[f02]記錄下次門診時間",
+								"mode"=> "datetime",
+								"initial"=> "2019-07-31T09:53",
+								"max"=> "2020-07-31T09:53",
+								"min"=> "2018-07-31T09:53"
+								  ]
+								],
+								"text"=> "紀錄"
+							  ]
+							]
+								
+						]
+					];
 					push($post_data,$access_token);
-				}
+				}				
 				else if($message=="@用藥紀錄")
 				{
 					$sql="UPDATE user set function_num=1 where user_id='$user_id'";
@@ -415,15 +434,15 @@ else if($data=="")
 													],
 													"hero"=> [
 													  "type"=> "image",
-													  "url"=> "https=>//scdn.line-apps.com/n/channel_devcenter/img/fx/01_4_news.png",
+													  "url"=> "https://i.ibb.co/hRmKyyG/0703-soliantorange.jpg",
 													  "flex"=> 3,
 													  "size"=> "full",
-													  "aspectRatio"=> "20=>13",
+													  "aspectRatio"=> "20:13",
 													  "aspectMode"=> "cover",
 													  "action"=> [
 														"type"=> "uri",
 														"label"=> "Action",
-														"uri"=> "https=>//linecorp.com/"
+														"uri"=> "https://linecorp.com/"
 													  ]
 													],
 													"body"=> [
@@ -438,18 +457,18 @@ else if($data=="")
 														  "contents"=> [
 															[
 															  "type"=> "image",
-															  "url"=> "https=>//scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_1.png",
+															  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_1.png",
 															  "size"=> "full",
-															  "aspectRatio"=> "20=>13",
+															  "aspectRatio"=> "20:13",
 															  "aspectMode"=> "fit",
 															  "backgroundColor"=> "#FFFFFF"
 															],
 															[
 															  "type"=> "image",
-															  "url"=> "https=>//scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_2.png",
+															  "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_2.png",
 															  "margin"=> "md",
 															  "size"=> "sm",
-															  "aspectRatio"=> "4=>3",
+															  "aspectRatio"=> "4:3",
 															  "aspectMode"=> "cover"
 															]
 														  ]
@@ -469,7 +488,7 @@ else if($data=="")
 															  "color"=> "#1865BF",
 															  "action"=> [
 																"type"=> "uri",
-																"uri"=> "https=>//www.tahsda.org.tw/departments/files/CardiovascularCenter/認識心臟衰竭.pdf"
+																"uri"=> "https://www.tahsda.org.tw/departments/files/CardiovascularCenter/認識心臟衰竭.pdf"
 															  ]
 															],
 															[
@@ -485,7 +504,7 @@ else if($data=="")
 															  "color"=> "#1865BF",
 															  "action"=> [
 																"type"=> "uri",
-																"uri"=> "https=>//www.tahsda.org.tw/departments/files/CardiovascularCenter/認識心臟衰竭.pdf"
+																"uri"=> "https://www.ymuh.ym.edu.tw/tw/departments/dep-support/nutrition/health-education/5915-%E4%BD%8E%E9%88%89%E9%A3%B2%E9%A3%9F%E5%8E%9F%E5%89%87.html"
 															  ]
 															],
 															[
@@ -501,7 +520,7 @@ else if($data=="")
 															  "color"=> "#1865BF",
 															  "action"=> [
 																"type"=> "uri",
-																"uri"=> "https=>//register.cgmh.org.tw/RMSTimeTable.aspx?dpt=32200A32220A"
+																"uri"=> "https://register.cgmh.org.tw/RMSTimeTable.aspx?dpt=32200A32220A"
 															  ]
 															],
 															[
@@ -517,7 +536,7 @@ else if($data=="")
 															  "color"=> "#1865BF",
 															  "action"=> [
 																"type"=> "uri",
-																"uri"=> "https=>//www.bli.gov.tw/0004837.html"
+																"uri"=> "https://www.bli.gov.tw/0004837.html"
 															  ]
 															]
 														  ]
