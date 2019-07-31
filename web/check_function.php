@@ -63,16 +63,6 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 			case 2.1:
 				$sql2 = "UPDATE user set time='$message' where user_id='$user_id'";
 				$result=mysqli_query($link,$sql2);
-					$post_data = [
-								"replyToken" => $reply_token,
-								"messages" => [
-									[ 
-									  "type"=> "text",    
-									  "text"=> "已完成紀錄， 門診時間為:$message!!\n請於下方紀錄提醒時間"
-									]
-								]
-							];
-					push($post_data,$access_token);
 					$post_data2 = [
 						"replyToken" => $reply_token,
 						"messages" => [
@@ -84,7 +74,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								"actions"=> [
 								  [
 									"type"=> "datetimepicker",
-									"label"=> "看診時間提醒",
+									"label"=> "已完成紀錄， 門診時間為:$message!!請於下方紀錄提醒時間",
 									"data"=> "[f02]看診時間提醒",
 									"mode"=> "date",
 									"initial"=> "2019-07-31",
@@ -98,7 +88,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								
 						]
 					];
-					push($post_data,$access_token);					
+					push($post_data2,$access_token);					
 				break;
 		}
 	}
