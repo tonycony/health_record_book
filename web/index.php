@@ -129,7 +129,7 @@ $date=date("Y.m.d");
 include("f1.php");
 include("check_function.php");
 f1($data,$user_id,$link,$access_token,$reply_token);
-check_function($function_num,$message,$user_id,,$link,$access_token,$reply_token);
+check_function($function_num,$message,$user_id,$link,$access_token,$reply_token);
 if($message=="@用藥紀錄")
 {
 	$sql="UPDATE user set function_num=1 where user_id='$user_id'";
