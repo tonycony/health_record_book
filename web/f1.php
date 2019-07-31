@@ -1,5 +1,5 @@
 <?php
-function f1($data,$user_id,$link,$access_token)
+function f1($data,$user_id,$link,$access_token,$reply_token)
 {
 	if($data=="[f1]記錄用藥")
 	{
