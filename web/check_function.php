@@ -73,10 +73,13 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 								"type"=> "buttons",
 								"actions"=> [
 								  [
-								"type"=> "postback",
+								"type"=> "datetimepicker",
 								"label"=> "記錄下次門診時間",
-								"text"=> "記錄下次門診時間",
-								"data"=> "[f02]記錄下次門診時間"
+								"data"=> "記錄下次門診時間",
+								"mode"=> "date",
+								"initial"=> "2019-07-31",
+								"max"=> "2020-07-31",
+								"min"=> "2018-07-31"
 								  ]
 								],
 								"text"=> "紀錄"
