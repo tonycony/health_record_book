@@ -137,19 +137,35 @@ else if($data=="")
 	switch($function_password)
 	{
 		case '@':
-				if($message=="@門診紀錄")
+                if($message=="@門診紀錄")
 				{
-					$post_data = [
-											"replyToken" => $reply_token,
-											"messages" => [
-												[ 
-												  "type"=> "text",    
-												  "text"=> "$date gggg $data"
-												]
-											]
-										];
+					$sql="UPDATE user set function_num=2 where user_id='$user_id'";
+					mysqli_query($link,$sql);
+					$post_data = 
+					[
+						"replyToken" => $reply_token,
+						"messages" => [
+							[
+							  "type"=> "template",
+							  "altText"=> "this is a buttons template",
+							  "template"=> [
+								"type"=> "buttons",
+								"actions"=> [
+								  [
+								"type"=> "postback",
+								"label"=> "記錄下次門診時間",
+								"text"=> "記錄下次門診時間",
+								"data"=> "[f02]記錄下次門診時間"
+								  ]
+								],
+								"text"=> "紀錄"
+							  ]
+							]
+								
+						]
+					];
 					push($post_data,$access_token);
-				}
+				}				
 				else if($message=="@用藥紀錄")
 				{
 					$sql="UPDATE user set function_num=1 where user_id='$user_id'";

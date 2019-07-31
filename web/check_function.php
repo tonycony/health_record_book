@@ -60,7 +60,48 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 				}
 				
 				break;	
-			
+			case 2.1:
+				$sql2 = "SELECT time FROM user WHERE user_id='$user_id'";
+				$result=mysqli_query($link,$sql2);
+				$row = mysqli_fetch_array($result);
+					$post_data = [
+								"replyToken" => $reply_token,
+								"messages" => [
+									[ 
+									  "type"=> "text",    
+									  "text"=> "已完成紀錄， 門診時間為:$row[0]!!"
+									]
+								]
+							];
+					push($post_data,$access_token);
+					$post_data2 = 
+					[
+						"replyToken" => $reply_token,
+						"messages" => [
+							[
+							  "type"=> "template",
+							  "altText"=> "this is a buttons template",
+							  "template"=> [
+								"type"=> "buttons",
+								"actions"=> [
+								  [
+								"type"=> "datetimepicker",
+								"label"=> "看診時間提醒",
+								"data"=> "[f02]看診時間提醒",
+								"mode"=>"date",
+								"initial"=>"2019-07-31",
+								"max"=> "2020-07-31",
+								"min"=> "2018-07-31"
+								  ]
+								],
+								"text"=> "提醒"
+							  ]
+							]
+								
+						]
+					];
+					push($post_data2,$access_token);					
+				break;
 		}
 	}
 	else
