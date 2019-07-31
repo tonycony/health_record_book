@@ -127,7 +127,7 @@ $user_name=$row["user_name"];
 $date=date("Y.m.d");
 /////////////////////////////////////////////////////////檢查第幾題了
 include("f1.php");
-f1($data,$user_id,$access_token);
+f1($data,$user_id,$link,$access_token);
 
 if($message=="@用藥紀錄")
 {
