@@ -82,7 +82,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 									"min"=> "2018-07-31"
 								  ]
 								],
-								"title": "5458",
+								"title"=> "5458",
 								"text"=> "提醒"
 							  ]
 							]
