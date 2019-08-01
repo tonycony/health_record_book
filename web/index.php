@@ -153,8 +153,8 @@ else if($data=="")
 								"actions"=> [
 								  [
 								"type"=> "datetimepicker",
-								"label"=> "記錄下次門診時間",
-								"data"=> "[f02]記錄下次門診時間",
+								"label"=> "記錄下次看診時間",
+								"data"=> "[f02]記錄下次看診時間",
 								"mode"=> "datetime",
 								"initial"=> "2019-07-31T09:53",
 								"max"=> "2020-07-31T09:53",
