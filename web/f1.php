@@ -1,5 +1,5 @@
 <?php
-function f1($data,$user_id,$link,$access_token,$reply_token)
+function f1($data,$user_id,$link,$access_token,$reply_token,$time)
 {
 	if($data=="[f01]記錄用藥")
 	{
@@ -41,7 +41,7 @@ function f1($data,$user_id,$link,$access_token,$reply_token)
 			"messages" => [
 				[
 				  "type"=> "text",
-				  "text"=> "下次門診時間為:"
+				  "text"=> "下次門診時間為 $time:"
 				]
 			]
 		];
