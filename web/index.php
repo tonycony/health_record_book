@@ -566,7 +566,7 @@ else if($time!="")
 					"messages" => [
 						[
 						  "type"=> "text",
-						  "text"=> "你所記錄的時間為:$time"
+						  "text"=> "你所記錄的時間為: $time"
 						]
 				]
 	];
