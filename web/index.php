@@ -130,7 +130,7 @@ include("f1.php");
 include("check_function.php");
 if($data!="")
 {
-	f1($data,$user_id,$link,$access_token,$reply_token);
+	f1($data,$user_id,$link,$access_token,$reply_token,$time);
 	return 0;
 }
 else if($data=="")
