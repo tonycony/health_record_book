@@ -112,6 +112,7 @@ $event = $json_obj->{"events"}[0];
 $type  = $event->{"message"}->{"type"};
 $message = $event->{"message"}->{"text"};
 $data=$event->{"postback"}->{"data"};
+$time=$event->{"postback"}->{"params"}->{"datetime"};
 $user_id  = $event->{"source"}->{"userId"};
 $reply_token = $event->{"replyToken"};
 //////////////////////////////////////////////////////////
@@ -153,8 +154,8 @@ else if($data=="")
 								"actions"=> [
 								  [
 								"type"=> "datetimepicker",
-								"label"=> "記錄下次看診時間",
-								"data"=> "[f02]記錄下次看診時間",
+								"label"=> "記錄下次門診時間",
+								"data"=> "[f02]記錄下次門診時間",
 								"mode"=> "datetime",
 								"initial"=> "2019-07-31T09:53",
 								"max"=> "2020-07-31T09:53",
@@ -504,7 +505,7 @@ else if($data=="")
 															  "color"=> "#1865BF",
 															  "action"=> [
 																"type"=> "uri",
-																"uri"=> "https://www.cgmh.org.tw/cgmn/category.asp?id_seq=1410004#.XUKH9egzaUl"
+																"uri"=> "https://www.ymuh.ym.edu.tw/tw/departments/dep-support/nutrition/health-education/5915-%E4%BD%8E%E9%88%89%E9%A3%B2%E9%A3%9F%E5%8E%9F%E5%89%87.html"
 															  ]
 															],
 															[
@@ -558,7 +559,19 @@ else if($data=="")
 	
 	
 }
-
+else if($time!="")
+{
+	$post_data = [
+					"replyToken" => $reply_token,
+					"messages" => [
+						[
+						  "type"=> "text",
+						  "text"=> "你所記錄的時間為:$time"
+						]
+				]
+	];
+	push($post_data,$access_token);
+}
 
 
 mysqli_close($link);
