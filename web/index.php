@@ -186,7 +186,7 @@ else if($data=="")
 								"actions"=> [
 								  [
 								"type"=> "postback",
-								"label"=> "記錄用藥",
+								"label"=> "記錄123用藥",
 								"text"=> "記錄用藥",
 								"data"=> "[f01]記錄用藥"
 								  ],
