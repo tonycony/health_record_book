@@ -60,38 +60,61 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 				}
 				
 				break;	
-			case 2.1:
-			/*
-				$sql2 = "UPDATE user set time='$message' where user_id='$user_id'";
+			case 3.1:
+			
+				date_default_timezone_set('Asia/Taipei');
+				$date=date("Y.m.d");
+				$sql2 = "UPDATE f3 set pulse='$message' where user_id='$user_id' and date='$date'";
 				$result=mysqli_query($link,$sql2);
 					$post_data = [
 						"replyToken" => $reply_token,
 						"messages" => [
 							[
-							  "type"=> "template",
-							  "altText"=> "this is a buttons template",
-							  "template"=> [
-								"type"=> "buttons",
-								"actions"=> [
-								  [
-								"type"=> "datetimepicker",
-								"label"=> "看診時間提醒",
-								"data"=> "[f02]看診時間提醒",
-								"mode"=> "datetime",
-								"initial"=> "2019-07-31T09:53",
-								"max"=> "2020-07-31T09:53",
-								"min"=> "2018-07-31T09:53"
-								  ]
-								],
-								"title"=> "設定提醒時間",
-								"text"=> "門診時間為:$message "
-							  ]
+							 	"type"=> "text",    
+								"text"=> "已成功輸入脈搏為 $message !!"
 							]
 								
 						]
 					];
 					push($post_data,$access_token);	
-				*/						
+										
+				break;
+			case 3.2:
+				break;
+			case 3.3:
+				date_default_timezone_set('Asia/Taipei');
+				$date=date("Y.m.d");
+				$sql2 = "UPDATE f3 set pulse='$message' where user_id='$user_id' and date='$date'";
+				$result=mysqli_query($link,$sql2);
+					$post_data = [
+						"replyToken" => $reply_token,
+						"messages" => [
+							[
+							 	"type"=> "text",    
+								"text"=> "已成功輸入體重為 $message !!"
+							]
+								
+						]
+					];
+					push($post_data,$access_token);	
+				
+				break;
+			case 3.4:
+				date_default_timezone_set('Asia/Taipei');
+				$date=date("Y.m.d");
+				$sql2 = "UPDATE f3 set sugar='$message' where user_id='$user_id' and date='$date'";
+				$result=mysqli_query($link,$sql2);
+					$post_data = [
+						"replyToken" => $reply_token,
+						"messages" => [
+							[
+							 	"type"=> "text",    
+								"text"=> "已成功輸入血糖為 $message !!"
+							]
+								
+						]
+					];
+					push($post_data,$access_token);	
 				break;
 		}
 	}
