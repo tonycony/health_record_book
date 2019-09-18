@@ -350,13 +350,13 @@ else if($data=="")
 								"actions"=> [
 								  [
 									"type"=> "postback",
-									"label"=> "每日紀錄",
-									"text"=> "每日紀錄",
-									"data"=> "[f03]每日紀錄"
+									"label"=> "每日記錄",
+									"text"=> "每日記錄",
+									"data"=> "[f03]每日記錄"
 								  ],
 								  [
 									"type"=> "uri",
-									"label"=> "顯示紀錄",
+									"label"=> "顯示記錄",
 									"uri"=> "line://app/1564501972-0PmpAEN3"
 								  ]
 								],
