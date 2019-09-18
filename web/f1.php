@@ -97,7 +97,67 @@ function f1($data,$user_id,$link,$access_token,$reply_token,$time)
 		push($post_data,$access_token);
 		
 	}
+	else if($data=="[f03]脈搏")
+	{
+		$sql = "UPDATE user set function_num=3.1 where user_id='$user_id'";
+		mysqli_query($link,$sql);
+		$post_data = [
+			"replyToken" => $reply_token,
+			"messages" => [
+				[
+				  "type"=> "text",
+				  "text"=> "請輸入你的脈搏喔!! 格式:#脈搏 例如:#80"
+				]
+			]
+		];
+		push($post_data,$access_token);
+	}
+	else if($data=="[f03]血壓")
+	{
+		$sql = "UPDATE user set function_num=3.2 where user_id='$user_id'";
+		mysqli_query($link,$sql);
+		$post_data = [
+			"replyToken" => $reply_token,
+			"messages" => [
+				[
+				  "type"=> "text",
+				  "text"=> "請輸入你的收縮壓與舒張壓喔!! 格式:#收縮壓 舒張壓 例如:#130 80"
+				]
+			]
+		];
+		push($post_data,$access_token);
+	}
 	
+	else if($data=="[f03]體重")
+	{
+		$sql = "UPDATE user set function_num=3.3 where user_id='$user_id'";
+		mysqli_query($link,$sql);
+		$post_data = [
+			"replyToken" => $reply_token,
+			"messages" => [
+				[
+				  "type"=> "text",
+				  "text"=> "請輸入你的體重喔!! 格式:#體重 例如:#75.5"
+				]
+			]
+		];
+		push($post_data,$access_token);
+	}
+	else if($data=="[f03]血糖")
+	{
+		$sql = "UPDATE user set function_num=3.4 where user_id='$user_id'";
+		mysqli_query($link,$sql);
+		$post_data = [
+			"replyToken" => $reply_token,
+			"messages" => [
+				[
+				  "type"=> "text",
+				  "text"=> "請輸入你的血糖喔!! 格式:#血醣 例如:#95"
+				]
+			]
+		];
+		push($post_data,$access_token);
+	}
 	return 0;
 }
 ?>
