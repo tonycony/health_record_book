@@ -85,7 +85,7 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 				$b=substr($message,$num+1);
 				date_default_timezone_set('Asia/Taipei');
 				$date=date("Y.m.d");
-				$sql2 = "UPDATE f3 set systolice='$a' where user_id='$user_id' and date='$date'";
+				$sql2 = "UPDATE f3 set systolic='$a' where user_id='$user_id' and date='$date'";
 				$result=mysqli_query($link,$sql2);
 				$sql2 = "UPDATE f3 set diastolic='$b' where user_id='$user_id' and date='$date'";
 				$result=mysqli_query($link,$sql2);
