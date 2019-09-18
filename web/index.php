@@ -308,29 +308,28 @@ else if($data=="")
 					[
 						"replyToken" => $reply_token,
 						"messages" => [
-							[
-							  "type"=> "template",
-							  "altText"=> "this is a buttons template",
-							  "template"=> [
-								"type"=> "buttons",
-								"actions"=> [
-								  [
-								"type"=> "postback",
-								"label"=> "記錄用藥",
-								"text"=> "記錄用藥",
-								"data"=> "[f01]記錄用藥"
-								  ],
-								  [
-								"type"=> "postback",
-								"label"=> "查詢藥品",
-								"text"=> "查詢藥品",
-								"data"=> "[f01]查詢藥品"
-								  ]
-								],
-								"title"=> "用藥紀錄",
-								"text"=> "選擇功能"
+						[
+						  "type": "template",
+						  "altText": "this is a buttons template",
+						  "template": [
+							"type": "buttons",
+							"actions": [
+							  [
+								"type": "postback",
+								"label": "每日紀錄",
+								"text": "每日紀錄",
+								"data": "[f03]每日紀錄"
+							  ],
+							  [
+								"type": "uri",
+								"label": "顯示紀錄",
+								"uri": "line://app/1564501972-0PmpAEN3"
 							  ]
-							]
+							],
+							"title": "健康紀錄",
+							"text": "選擇功能"
+						  ]
+						]
 								
 						]
 					];
