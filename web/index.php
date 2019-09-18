@@ -338,7 +338,6 @@ else if($data=="")
 				}
 				else if($message=="@健康紀錄")
 				{
-					mysqli_query($link,$sql);
 					$post_data = 
 					[
 						"replyToken" => $reply_token,
