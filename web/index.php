@@ -357,7 +357,7 @@ else if($data=="")
 								  [
 									"type"=> "uri",
 									"label"=> "顯示紀錄",
-									"uri"=> "line=>//app/1564501972-0PmpAEN3"
+									"uri"=> "line://app/1564501972-0PmpAEN3"
 								  ]
 								],
 								"title"=> "健康紀錄",
