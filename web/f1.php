@@ -53,47 +53,47 @@ function f1($data,$user_id,$link,$access_token,$reply_token,$time)
 	else if($data=="[f03]每日記錄")
 	{
 		$post_data = 
-					[
-						"replyToken" => $reply_token,
-						"messages" => [
-							[
-								  "type"=> "template",
-								  "altText"=> "this is a buttons template",
-								  "template"=> [
-									"type"=> "buttons",
-									"actions"=> [
-									  [
-										"type"=> "postback",
-										"label"=> "脈搏",
-										"text"=> "脈搏",
-										"data"=> "[f03]脈搏"
-									  ],
-									  [
-										"type"=> "postback",
-										"label"=> "血壓",
-										"text"=> "血壓",
-										"data"=> "[f03]血壓"
-									  ],
-									  [
-										"type"=> "postback",
-										"label"=> "體重",
-										"text"=> "體重",
-										"data"=> "[f03]體重"
-									  ],
-									  [
-										"type"=> "postback",
-										"label"=> "血糖",
-										"text"=> "血糖",
-										"data"=> "[f03]血糖"
-									  ]
-									],
-									"title"=> "每日記錄",
-									"text"=> "選擇紀錄事項"
-								  ]
-							]
-								
-						]
-					];
+		[
+			"replyToken" => $reply_token,
+			"messages" => [
+				[
+					  "type"=> "template",
+					  "altText"=> "this is a buttons template",
+					  "template"=> [
+						"type"=> "buttons",
+						"actions"=> [
+						  [
+							"type"=> "postback",
+							"label"=> "脈搏",
+							"text"=> "脈搏",
+							"data"=> "[f03]脈搏"
+						  ],
+						  [
+							"type"=> "postback",
+							"label"=> "血壓",
+							"text"=> "血壓",
+							"data"=> "[f03]血壓"
+						  ],
+						  [
+							"type"=> "postback",
+							"label"=> "體重",
+							"text"=> "體重",
+							"data"=> "[f03]體重"
+						  ],
+						  [
+							"type"=> "postback",
+							"label"=> "血糖",
+							"text"=> "血糖",
+							"data"=> "[f03]血糖"
+						  ]
+						],
+						"title"=> "每日記錄",
+						"text"=> "選擇紀錄事項"
+					  ]
+				]
+
+			]
+		];
 		push($post_data,$access_token);
 		
 	}
