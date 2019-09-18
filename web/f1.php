@@ -52,6 +52,10 @@ function f1($data,$user_id,$link,$access_token,$reply_token,$time)
 	
 	else if($data=="[f03]每日記錄")
 	{
+		date_default_timezone_set('Asia/Taipei');
+		$date=date("Y.m.d");
+		$sql="insert into f3(user_id,date) values ('$user_id','$date')";
+		mysqli_query($link,$sql);
 		$post_data = 
 		[
 			"replyToken" => $reply_token,
