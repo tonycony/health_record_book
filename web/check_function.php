@@ -80,22 +80,37 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 										
 				break;
 			case 3.2:
+				$num=strpos($message," ");
+				$a=substr($message,0,$num);
+				$b=substr($message,$num+1);
+				$post_data = [
+					"replyToken" => $reply_token,
+					"messages" => [
+						[
+							"type"=> "text",    
+							"text"=> "已成功輸入體重為 $a $b !!"
+						]
+
+					]
+				];
+					push($post_data,$access_token);	
+				
 				break;
 			case 3.3:
 				date_default_timezone_set('Asia/Taipei');
 				$date=date("Y.m.d");
 				$sql2 = "UPDATE f3 set weigh='$message' where user_id='$user_id' and date='$date'";
 				$result=mysqli_query($link,$sql2);
-					$post_data = [
-						"replyToken" => $reply_token,
-						"messages" => [
-							[
-							 	"type"=> "text",    
-								"text"=> "已成功輸入體重為 $message !!"
-							]
-								
+				$post_data = [
+					"replyToken" => $reply_token,
+					"messages" => [
+						[
+							"type"=> "text",    
+							"text"=> "已成功輸入體重為 $message !!"
 						]
-					];
+
+					]
+				];
 					push($post_data,$access_token);	
 				
 				break;
