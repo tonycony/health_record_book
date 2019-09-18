@@ -338,7 +338,36 @@ else if($data=="")
 				}
 				else if($message=="@健康紀錄")
 				{
-					
+					$post_data = 
+					[
+						"replyToken" => $reply_token,
+						"messages" => [
+							[
+							  "type"=> "template",
+							  "altText"=> "this is a buttons template",
+							  "template"=> [
+								"type"=> "buttons",
+								"actions"=> [
+								  [
+									"type"=> "postback",
+									"label"=> "每日紀錄",
+									"text"=> "每日紀錄",
+									"data"=> "[f03]每日紀錄"
+								  ],
+								  [
+									"type"=> "uri",
+									"label"=> "顯示紀錄",
+									"uri"=> "line=>//app/1564501972-0PmpAEN3"
+								  ]
+								],
+								"title"=> "健康紀錄",
+								"text"=> "選擇功能"
+							  ]
+							]
+								
+						]
+					];
+					push($post_data,$access_token);
 				}
 				else if($message=="@填寫問卷")//開始填寫問卷
 				{
