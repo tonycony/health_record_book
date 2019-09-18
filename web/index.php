@@ -336,6 +336,34 @@ else if($data=="")
 					];
 					push($post_data,$access_token);
 				}
+				else if($message=="@健康紀錄")
+				{
+					mysqli_query($link,$sql);
+					$post_data = 
+					[
+						  "type": "template",
+						  "altText": "this is a buttons template",
+						  "template": [
+							"type": "buttons",
+							"actions": [
+							  [
+								"type": "postback",
+								"label": "每日紀錄",
+								"text": "每日紀錄",
+								"data": "[f03]每日紀錄"
+							  ],
+							  [
+								"type": "uri",
+								"label": "顯示紀錄",
+								"uri": "line://app/1564501972-0PmpAEN3"
+							  ]
+							],
+							"title": "健康紀錄",
+							"text": "選擇功能"
+						  ]
+					]
+					push($post_data,$access_token);
+				}
 				else if($message=="@填寫問卷")//開始填寫問卷
 				{
 					$sql = "UPDATE user set question_num=1 where user_id='$user_id'";//題號改為1開始
@@ -559,21 +587,6 @@ else if($data=="")
 	
 	
 }
-else if($time!="")
-{
-	$post_data = [
-					"replyToken" => $reply_token,
-					"messages" => [
-						[
-						  "type"=> "text",
-						  "text"=> "你所記錄的時間為: $time"
-						]
-				]
-	];
-	push($post_data,$access_token);
-}
-
-
 mysqli_close($link);
 return 0;
 ?>
