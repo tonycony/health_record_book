@@ -83,12 +83,18 @@ function check_function($function_num,$message,$user_id,$link,$access_token,$rep
 				$num=strpos($message," ");
 				$a=substr($message,0,$num);
 				$b=substr($message,$num+1);
+				date_default_timezone_set('Asia/Taipei');
+				$date=date("Y.m.d");
+				$sql2 = "UPDATE f3 set systolice='$a' where user_id='$user_id' and date='$date'";
+				$result=mysqli_query($link,$sql2);
+				$sql2 = "UPDATE f3 set diastolic='$b' where user_id='$user_id' and date='$date'";
+				$result=mysqli_query($link,$sql2);
 				$post_data = [
 					"replyToken" => $reply_token,
 					"messages" => [
 						[
 							"type"=> "text",    
-							"text"=> "已成功輸入體重為 $a $b !!"
+							"text"=> "已成功輸入血壓為 $a $b !!"
 						]
 
 					]
