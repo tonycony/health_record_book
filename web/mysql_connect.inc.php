@@ -2,7 +2,7 @@
 <?php
 //資料庫設定
 //資料庫位置
-$db_server = "54.156.124.2";
+$db_server = "52.1.151.129";
 //資料庫名稱
 $db_name = "health_record_book";
 //資料庫管理者帳號
