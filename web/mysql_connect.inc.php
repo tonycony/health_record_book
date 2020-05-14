@@ -2,13 +2,13 @@
 <?php
 //資料庫設定
 //資料庫位置
-$db_server = "52.1.151.129";
+$db_server = "120.126.17.44";
 //資料庫名稱
 $db_name = "health_record_book";
 //資料庫管理者帳號
-$db_user = "case";
+$db_user = "casebook";
 //資料庫管理者密碼
-$db_passwd = "1234";
+$db_passwd = "eric441567";
 
 //對資料庫連線
 $link=mysqli_connect($db_server, $db_user, $db_passwd)
