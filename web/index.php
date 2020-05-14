@@ -538,7 +538,7 @@ else if($data=="")
 															  "color"=> "#1865BF",
 															  "action"=> [
 																"type"=> "uri",
-																"uri"=> "https://www.ymuh.ym.edu.tw/tw/departments/dep-support/nutrition/health-education/5915-%E4%BD%8E%E9%88%89%E9%A3%B2%E9%A3%9F%E5%8E%9F%E5%89%87.html"
+																"uri"=> "https://www.cgmh.org.tw/cgmn/category.asp?id_seq=1410004#.XrzvMcgzaUk"
 															  ]
 															],
 															[
@@ -554,7 +554,7 @@ else if($data=="")
 															  "color"=> "#1865BF",
 															  "action"=> [
 																"type"=> "uri",
-																"uri"=> "https://register.cgmh.org.tw/RMSTimeTable.aspx?dpt=32200A32220A"
+																"uri"=> "https://register.cgmh.org.tw/"
 															  ]
 															],
 															[
